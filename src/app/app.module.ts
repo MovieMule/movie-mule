@@ -4,14 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { VideolistComponent } from './videolist/videolist.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { VideosComponent } from './videos/videos.component';
+import { VideoListComponent } from './videos/video-list/video-list.component';
+import { VideoDisplayComponent } from './videos/video-display/video-display.component';
+import { VideoItemComponent } from './videos/video-list/video-item/video-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideolistComponent,
-    NavbarComponent
+    NavbarComponent,
+    VideosComponent,
+    VideoListComponent,
+    VideoDisplayComponent,
+    VideoItemComponent
   ],
   imports: [
     BrowserModule,
