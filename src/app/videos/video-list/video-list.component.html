@@ -1,11 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let video of videoList">
-          <div>{{ video.name }}</div>
-        </li>
-      </ul>
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-video-item
+        *ngFor="let video of videoList; let i = index"
+        [video]="video"
+        (click)="onClick(i)">
+      </app-video-item>
+    </ul>
   </div>
 </div>
+
