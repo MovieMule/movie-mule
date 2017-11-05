@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <app-video-item
+        *ngFor="let video of videoList; let i = index"
+        [video]="video"
+        (click)="onClick(i)">
+      </app-video-item>
+    </ul>
+  </div>
+</div>
+

@@ -1,9 +1,3 @@
-<h1>
-  {{title}}
-</h1>
 <app-navbar></app-navbar>
-<app-videolist></app-videolist>
-<div *ngFor='let item of videoList'>
-  <iframe width="560" height="315" [src]="getEmbedUrl(item)" frameborder="0" allowfullscreen></iframe>
-</div>
+<app-videos></app-videos>
 

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12">
+    <iframe
+      *ngIf="video; else selectVideo"
+      height="349"
+      width="560"
+      [src]="safeUrl">
+    </iframe>
+    <ng-template #selectVideo><h3>Please select a video</h3></ng-template>
+  </div>
+</div>
