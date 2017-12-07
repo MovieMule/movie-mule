@@ -20,7 +20,7 @@ export class VideoDisplayComponent implements OnInit {
      this.videoService.videoSelected.subscribe(
        (video: Video) => {
          this.video = video;
-         this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.trailerPath);
+         // this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.id);
        })
   }
 
