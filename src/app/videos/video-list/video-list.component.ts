@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { VideoService } from '../video.service';
 import { Video } from '../video.model';
@@ -8,13 +8,17 @@ import { Video } from '../video.model';
   templateUrl: './video-list.component.html',
   styleUrls: ['./video-list.component.css']
 })
-export class VideoListComponent implements OnInit {
+export class VideoListComponent implements OnInit, AfterViewInit {
     videoList: Video[];
 
   constructor(private videoService: VideoService) { }
 
   ngOnInit() {
     this.videoList = this.videoService.getVideos();
+  }
+
+  ngAfterViewInit() {
+    this.videoService.getTrailerPath();
   }
 
   onClick(id: number) {
