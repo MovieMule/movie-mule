@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoService } from '../video.service';
 import { Video } from '../video.model';
 
+const baseUrl = 'https://www.youtube.com/embed/';
 @Component({
   selector: 'app-video-display',
   templateUrl: './video-display.component.html',
@@ -17,10 +18,11 @@ export class VideoDisplayComponent implements OnInit {
   constructor(private videoService: VideoService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+     // this.videoService.getTrailerPath();
      this.videoService.videoSelected.subscribe(
        (video: Video) => {
          this.video = video;
-         // this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.video.id);
+         this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(baseUrl + this.video.trailerKey);
        })
   }
 
