@@ -24,7 +24,7 @@ export class VideoService {
 
     this.http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=df67384ca445fcefa0f3c42e008ccafe&language=en-US&page=1').subscribe(
         (data) => {
-
+          console.log(data);
           data['results'].forEach( (item) => {
             this.videos.push(
               new Video(
@@ -40,17 +40,21 @@ export class VideoService {
     return this.videos;
   }
 
-  getTrailerPath() {
+  getTrailerPath(index: number) {
     // console.log(this.videos); //this.videos logs as an array of items, but cannot access one specific video in that array
-    this.http.get(`https://api.themoviedb.org/3/movie/${this.videos[0]['id']}/videos?api_key=df67384ca445fcefa0f3c42e008ccafe&language=en-US`)
+    const movieId =this.videos[index].id;
+    this.http.get(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=df67384ca445fcefa0f3c42e008ccafe&language=en-US`)
       .subscribe( (trailerData) => {
-        this.videos[0].trailerKey = trailerData['results'][0]['key'];
+        this.videos[index].trailerKey = trailerData['results'][0]['key'];
+        console.log(trailerData);
+        this.selectedVideo = this.videos[index];
+        this.videoSelected.emit(this.selectedVideo);
       })
   }
 
-  onVideoSelect(id: number) {
-    this.selectedVideo = this.videos[id];
-    this.videoSelected.emit(this.selectedVideo);
+  onVideoSelect(index: number) {
+    this.getTrailerPath(index);
+
   }
 
   getSelectedVideo() {
