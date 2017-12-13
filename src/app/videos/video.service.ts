@@ -20,9 +20,11 @@ export class VideoService {
 
   constructor(private http: HttpClient) { };
 
-  getVideos() {
+  getVideos(filter: string = 'upcoming', pageCount: number = 1) {
+    // parameter filter can be the following:
+    // upcoming, popular, top_rated, now_playing
 
-    this.http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=df67384ca445fcefa0f3c42e008ccafe&language=en-US&page=1').subscribe(
+    this.http.get(`https://api.themoviedb.org/3/movie/${filter}?api_key=df67384ca445fcefa0f3c42e008ccafe&language=en-US&page=${pageCount}`).subscribe(
         (data) => {
           console.log(data);
           data['results'].forEach( (item) => {
@@ -37,6 +39,7 @@ export class VideoService {
           });
         }
     )
+
     return this.videos;
   }
 
