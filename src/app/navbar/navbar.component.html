@@ -6,10 +6,14 @@
     <div class="navbar-default">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#">Upcoming</a>
+          <a
+            id="upcoming"
+            (click)="onClick($event)">Upcoming</a>
         </li>
         <li>
-          <a href="#">Past</a>
+          <a
+            id="top_rated"
+            (click)="onClick($event)">Top Rated</a>
         </li>
       </ul>
     </div>
