@@ -39,7 +39,9 @@ export class VideoService {
                 item['title'],
                 item['id'],
                 imageBasePath + item['poster_path'],
-                ''
+                'trailer-path-here',
+                item['release_date'],
+                item['vote_average']
               )
             );
           });
